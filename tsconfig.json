@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "paths": {
       "@crherman7/rechunk": ["./src/react-native/index"],
-      "@/*": ["./example/src/*"]
+      "@/*": ["./examples/react-native-cli/src/*"]
     },
     "types": ["react-native", "node"],
     "module": "ESNext"
