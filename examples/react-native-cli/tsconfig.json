@@ -3,14 +3,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@crherman7/rechunk": ["./src/react-native/index"]
+      "@crherman7/rechunk": ["../../src/react-native/index"],
+      "@/*": ["./src/*"]
     },
-    "types": ["react-native", "node"],
-    "module": "ESNext"
   },
   "exclude": [
-    "app",
-    "docs",
     "node_modules",
     "babel.config.js",
     "metro.config.js",

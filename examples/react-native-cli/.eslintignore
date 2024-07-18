@@ -1,0 +1,12 @@
+# build files
+.idea
+
+dist
+ios
+android
+
+# config Files
+.vscode
+.github
+
+babel.config.js
