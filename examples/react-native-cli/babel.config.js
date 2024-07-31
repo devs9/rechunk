@@ -5,6 +5,10 @@ module.exports = {
   presets: [
     [
     'module:@react-native/babel-preset',
+      /*
+      * the enableBabelRuntime: false has been added for correct work of rechunk.
+      * but we are working on a solution so that this option does not need to be added to the project.
+      * */
       {
         "enableBabelRuntime": false,
       }
