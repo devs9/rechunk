@@ -1,17 +1,16 @@
-import {getBabelOutputPlugin} from '@rollup/plugin-babel';
-import image from '@rollup/plugin-image';
-import typescript from '@rollup/plugin-typescript';
 import chalk from 'chalk';
 import {program} from 'commander';
-import {createHash, createSign} from 'crypto';
+import {createHash} from 'crypto';
 import fs from 'fs';
 import http from 'http';
+import {KEYUTIL, KJUR, RSAKey} from 'jsrsasign';
 import path from 'path';
 import prettier from 'prettier';
 import {rollup} from 'rollup';
 import url from 'url';
 
-import {getBabelConfig, getPackageJson, getRechunkConfig, LOGO} from '../lib';
+import withRechunk from '../../rollup-preset';
+import {getRechunkConfig, LOGO} from '../lib';
 
 /**
  * Defines a command for the "dev-server" operation using the "commander" library.
@@ -36,9 +35,7 @@ program
     const {default: getPort} = await import('get-port');
 
     const port = await getPort();
-    const pak = getPackageJson();
     const rc = getRechunkConfig();
-    const babelConfig = getBabelConfig();
 
     function updateRechunkConfig(config: Object) {
       fs.writeFileSync(
@@ -49,19 +46,6 @@ program
         }),
         'utf-8',
       );
-    }
-
-    const found = babelConfig?.plugins?.findIndex?.((it: unknown) => {
-      if (Array.isArray(it)) {
-        return (
-          it[0] === 'module-resolver' ||
-          it[0] === require.resolve('babel-plugin-module-resolver')
-        );
-      }
-    });
-
-    if (found > -1) {
-      babelConfig.plugins.splice(found, 1);
     }
 
     updateRechunkConfig({...rc, host: `http://localhost:${port}`});
@@ -119,57 +103,29 @@ program
         }
 
         const input = path.resolve(process.cwd(), rc.entry[chunkId]);
-
-        const rcExternal = rc.external || [];
-
         // Rollup bundling process
-        const rollupBuild = await rollup({
-          input,
-          external: [...Object.keys(pak.dependencies || {}), ...rcExternal],
-          plugins: [
-            image(),
-            typescript({
-              compilerOptions: {
-                jsx: 'react',
-                module: 'commonjs',
-                esModuleInterop: true,
-                allowSyntheticDefaultImports: true,
-                downlevelIteration: true,
-              },
-            }),
-          ],
-          logLevel: 'silent',
-        });
+        const rollupBuild = await rollup(await withRechunk({input}));
 
         // Generate bundled code
         const {
           output: {
             0: {code},
           },
-        } = await rollupBuild.generate({
-          plugins: [
-            getBabelOutputPlugin({
-              ...babelConfig,
-            }),
-          ],
-        });
+        } = await rollupBuild.generate({});
 
-        // Encode code as base64
-        const data = btoa(code);
-
-        // Calculate SHA-256 hash of the code
-        const hash = createHash('sha256').update(data).digest('hex');
-
-        // Generate signature using private key
-        const sig = createSign('SHA256')
-          .update(hash)
-          .sign(rc.privateKey, 'base64');
+        const prvKey = KEYUTIL.getKey(rc.privateKey) as RSAKey;
+        const sPayload = createHash('sha256').update(code).digest('hex');
+        const token = KJUR.jws.JWS.sign(
+          'RS256',
+          JSON.stringify({alg: 'RS256'}),
+          sPayload,
+          prvKey,
+        );
 
         // Prepare response data
         const responseData = {
-          data,
-          hash,
-          sig,
+          token,
+          data: code,
         };
 
         // Set response headers
