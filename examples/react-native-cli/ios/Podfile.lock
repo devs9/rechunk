@@ -1192,7 +1192,6 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../../../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../../../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../../../node_modules/react-native/ReactCommon`)
-  - rechunk (from `../../..`)
   - RNSVG (from `../../../node_modules/react-native-svg`)
   - Yoga (from `../../../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1310,8 +1309,6 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../../../node_modules/react-native/ReactCommon"
-  rechunk:
-    :path: "../../.."
   RNSVG:
     :path: "../../../node_modules/react-native-svg"
   Yoga:
@@ -1382,6 +1379,6 @@ SPEC CHECKSUMS:
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
 
-PODFILE CHECKSUM: b3b2ec9bde86374be747766294d6323f4a640f10
+PODFILE CHECKSUM: d4beb859cca5e41af22d254de78964214ea9f176
 
 COCOAPODS: 1.14.3

@@ -3,16 +3,7 @@ const pak = require('../../package.json');
 
 module.exports = {
   presets: [
-    [
-    'module:@react-native/babel-preset',
-      /*
-      * the enableBabelRuntime: false has been added for correct work of rechunk.
-      * but we are working on a solution so that this option does not need to be added to the project.
-      * */
-      {
-        "enableBabelRuntime": false,
-      }
-    ]
+    ['module:@react-native/babel-preset']
   ],
   plugins: [
     [
@@ -25,6 +16,6 @@ module.exports = {
         },
       },
     ],
-    [path.resolve('../../dist/babel')],
+    [path.resolve('../../dist/babel-plugin')],
   ],
 };
