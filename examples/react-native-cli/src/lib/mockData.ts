@@ -1,30 +1,4 @@
-import React, {Suspense, lazy} from 'react';
-import {ErrorBoundary} from 'react-error-boundary';
-import {ActivityIndicator, StyleSheet, SafeAreaView, View} from 'react-native';
-import {importChunk} from '@crherman7/rechunk';
-import {Error404} from '@/components';
-
-const Card = lazy(() => importChunk('card'));
-const Balance = lazy(() => importChunk('balance'));
-const Transactions = lazy(() => importChunk('transactions'));
-
-export default function App() {
-  return (
-    <ErrorBoundary FallbackComponent={Error404}>
-      <Suspense fallback={<ActivityIndicator style={styles.container} />}>
-        <SafeAreaView style={styles.container}>
-          <View style={styles.content}>
-            <Card />
-            <Balance data={balanceData.data} balance={balanceData.total} />
-          </View>
-          <Transactions data={transactionsData} />
-        </SafeAreaView>
-      </Suspense>
-    </ErrorBoundary>
-  );
-}
-
-const balanceData = {
+export const balanceData = {
   total: 921.27,
   data: {
     labels: ['test'],
@@ -47,7 +21,7 @@ const balanceData = {
   },
 };
 
-const transactionsData = [
+export const transactionsData = [
   {
     title: 'Akamai Coffee Shop',
     location: 'Kihei, HI',
@@ -91,14 +65,3 @@ const transactionsData = [
     icon: '#0091FF',
   },
 ];
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 16,
-    backgroundColor: '#ecf0f1',
-  },
-  content: {
-    paddingHorizontal: 16,
-  },
-});
