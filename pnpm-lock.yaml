@@ -234,8 +234,8 @@ importers:
         specifier: 0.73.5
         version: 0.73.5(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))
       '@react-native/typescript-config':
-        specifier: ^0.74.0
-        version: 0.74.0
+        specifier: 0.73.1
+        version: 0.73.1
       '@types/react':
         specifier: ^18.2.6
         version: 18.2.65
@@ -2079,6 +2079,9 @@ packages:
 
   '@react-native/normalize-colors@0.73.2':
     resolution: {integrity: sha512-bRBcb2T+I88aG74LMVHaKms2p/T8aQd8+BZ7LuuzXlRfog1bMWWn/C5i0HVuvW4RPtXQYgIlGiXVDy9Ir1So/w==}
+
+  '@react-native/typescript-config@0.73.1':
+    resolution: {integrity: sha512-7Wrmdp972ZO7xvDid+xRGtvX6xz47cpGj7Y7VKlUhSVFFqbOGfB5WCpY1vMr6R/fjl+Og2fRw+TETN2+JnJi0w==}
 
   '@react-native/typescript-config@0.74.0':
     resolution: {integrity: sha512-Nt7AkbuLXIfoWmUrlTp06UTUj6LrMhwJhf/ReEHVpiaVJRjuqfjmwelvW/6dGSJjPFtYvziC+iaLLeyv2oBV7w==}
@@ -9270,6 +9273,8 @@ snapshots:
       - supports-color
 
   '@react-native/normalize-colors@0.73.2': {}
+
+  '@react-native/typescript-config@0.73.1': {}
 
   '@react-native/typescript-config@0.74.0': {}
 
