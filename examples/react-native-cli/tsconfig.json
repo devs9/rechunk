@@ -3,14 +3,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@crherman7/rechunk": ["../../src/react-native/index"],
+      "@crherman7/rechunk": ["../src/react-native"],
       "@/*": ["./src/*"]
     },
-  },
-  "exclude": [
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"
-  ]
+    "types": ["react-native", "node"]
+  }
 }
