@@ -13,23 +13,23 @@ WORKDIR /app
 # Copy the package.json file from the local directory to /app in the container
 COPY ./app/package.json ./
 
-# Copy the yarn.lock file from the local directory to /app in the container
-COPY yarn.lock ./
+# Copy the pnpm-lock.yaml file from the local directory to /app in the container
+COPY pnpm-lock.yaml ./
 
 # Install dependencies listed in package.json using Yarn
-RUN yarn install
+RUN pnpm install
 
 # Copy all files from the local ./app directory to /app in the container
 COPY ./app .
 
 # Build the project using Yarn
-RUN yarn build
+RUN pnpm build
 
 # Generate database migrations
-RUN yarn db:generate
+RUN pnpm db:generate
 
 # Run database migrations
-RUN yarn db:migrate
+RUN pnpm db:migrate
 
 # Expose port 3000 to allow communication with services outside of the container
 EXPOSE 3000
