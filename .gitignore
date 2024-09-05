@@ -80,3 +80,7 @@ dist/
 # Drizzle
 migrations
 *.db
+
+# Expo
+.expo/
+web-build/
