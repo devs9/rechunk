@@ -1,14 +1,15 @@
 {
+  "plugins": {
+    "@release-it-plugins/workspaces": true
+  },
   "git": {
     "commitMessage": "chore: release v${version}",
     "requireBranch": "develop",
-    "requireCleanWorkingDir": true
+    "requireCleanWorkingDir": false
   },
   "github": {
     "releaseName": "Release ${name} v${version}",
     "release": true
   },
-  "npm": {
-    "release": true
-  }
+  "npm": false
 }
