@@ -1,6 +1,6 @@
 {
   "name": "react-native-expo",
-  "version": "2.0.0-rc.9",
+  "version": "2.0.0-rc.11",
   "private": true,
   "main": "index.js",
   "scripts": {

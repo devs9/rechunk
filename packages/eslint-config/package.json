@@ -1,6 +1,6 @@
 {
   "name": "@repo/eslint-config",
-  "version": "2.0.0-rc.9",
+  "version": "2.0.0-rc.11",
   "description": "ESLint configuration",
   "license": "MIT",
   "private": true,
