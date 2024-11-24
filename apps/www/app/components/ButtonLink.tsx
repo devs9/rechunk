@@ -50,17 +50,15 @@ export function ButtonLink({
     </>
   );
 
-  return external ? (
+  return (
     <a
       href={to}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
       className="flex items-center"
       aria-label={label}
       role="button">
       <Button>{sharedContent}</Button>
     </a>
-  ) : (
-    <Button>{sharedContent}</Button>
   );
 }
