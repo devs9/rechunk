@@ -1,6 +1,15 @@
 ---
-title: 'Server'
+meta:
+  - title: Server
 ---
+
+import {json} from '@remix-run/react';
+
+export const meta = frontmatter.meta;
+
+export async function loader() {
+    return json({title: frontmatter.meta[0].title });
+}
 
 The default ReChunk instance is located in the `app` directory within this repository. You can run this server locally or host it remotely. This setup allows you to create a ReChunk project and generate a `rechunk.json` configuration file.
 

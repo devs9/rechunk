@@ -1,8 +1,15 @@
 ---
-title: 'Getting Started'
+meta:
+  - title: Getting Started
 ---
 
+import {json} from '@remix-run/react';
+
 export const meta = frontmatter.meta;
+
+export async function loader() {
+    return json({title: frontmatter.meta[0].title });
+}
 
 ReChunk is an all-inclusive package that includes a command-line interface (CLI) and library designed for rendering encoded components with React Native. The CLI is designed to work alongside an API that adheres to the interface specified in the library. You can use the Docker image right out of the box and deploy it wherever best suits your project, or alternatively, create your own server that conforms to the interface.
 
