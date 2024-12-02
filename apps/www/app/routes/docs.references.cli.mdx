@@ -1,8 +1,15 @@
 ---
-title: 'Command-line Interface'
+meta:
+  - title: Command-line Interface
 ---
 
+import {json} from '@remix-run/react';
+
 export const meta = frontmatter.meta;
+
+export async function loader() {
+    return json({title: frontmatter.meta[0].title });
+}
 
 The command-line interface (CLI) provides the primary means to interact with the ReChunk service, enabling the hosting and distribution of your bundled chunks.
 

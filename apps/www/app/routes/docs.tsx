@@ -1,12 +1,28 @@
 import {Outlet} from '@remix-run/react';
 
-import {Header} from "~/components/Header";
+import {DocsSidebar} from '~/components/DocsSidebar';
+import {Header} from '~/components/Header';
+import {GridPattern} from '~/components/ui/grid-pattern';
+import {SidebarProvider} from '~/components/ui/sidebar';
 
 export default function DocsLayout() {
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden">
-      <Header/>
-      <Outlet/>
-    </div>
+    <>
+      <Header />
+      <GridPattern
+        width={30}
+        height={30}
+        strokeDasharray="4 2"
+        className="fixed top-3 -z-10 [mask-image:radial-gradient(750px_circle_at_center,white,transparent)] lg:-top-1"
+      />
+      <SidebarProvider>
+        <div className="m-auto block px-4 sm:px-6 lg:flex lg:px-11">
+          <DocsSidebar />
+          <div className="markdown pb-[33vh]min-h-[80vh] w-full max-w-3xl lg:ml-3 lg:w-[calc(100%-var(--sidebar-width))] lg:pl-6 xl:pl-10 2xl:pl-12 [&_*:focus]:scroll-mt-[8rem] lg:[&_*:focus]:scroll-mt-[5rem]">
+            <Outlet />
+          </div>
+        </div>
+      </SidebarProvider>
+    </>
   );
 }

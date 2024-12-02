@@ -1,8 +1,15 @@
 ---
-title: 'Try it out'
+meta:
+  - title: Try it out
 ---
 
+import {json} from '@remix-run/react';
+
 export const meta = frontmatter.meta;
+
+export async function loader() {
+    return json({title: frontmatter.meta[0].title });
+}
 
 This guide demonstrates how to quickly evaluate the library to determine its suitability for your project.
 

@@ -1,8 +1,15 @@
 ---
-title: 'Client'
+meta:
+  - title: Client
 ---
 
+import {json} from '@remix-run/react';
+
 export const meta = frontmatter.meta;
+
+export async function loader() {
+    return json({title: frontmatter.meta[0].title });
+}
 
 The `client` is the ReChunk React Native library to configure and import chunks.
 

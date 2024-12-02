@@ -1,8 +1,15 @@
 ---
-title: 'How it works'
+meta:
+  - title: How it works
 ---
 
+import {json} from '@remix-run/react';
+
 export const meta = frontmatter.meta;
+
+export async function loader() {
+    return json({title: frontmatter.meta[0].title });
+}
 
 This guide is optional and provides a high-level explanation of how to render a remote component using ReChunk. There are two main parts to this library - the client and the command-line interface (CLI). The CLI is the precursor to actually being able to render a remote component via the client.
 
