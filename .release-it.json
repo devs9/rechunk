@@ -4,13 +4,12 @@
   },
   "git": {
     "commitMessage": "chore: release v${version}",
-    "commit": false,
     "requireBranch": "develop",
     "requireCleanWorkingDir": false
   },
   "github": {
     "releaseName": "Release ${name} v${version}",
-    "release": false
+    "release": true
   },
   "npm": false
 }
