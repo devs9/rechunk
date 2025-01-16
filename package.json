@@ -1,6 +1,6 @@
 {
   "name": "rechunk",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "description": "🚀 Securely load and execute remote React Native components and functions over-the-air",
   "keywords": [
@@ -37,7 +37,7 @@
     "release:minor": "pnpm release --increment minor",
     "release:patch": "pnpm release --increment patch",
     "release:pre-release": "pnpm release --preRelease=rc",
-    "postrelease": "pnpm --filter '@repo/*' --filter '@rechunk/*' recursive exec pnpm publish"
+    "postrelease": "pnpm --filter '@rechunk/*' recursive exec pnpm publish"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",

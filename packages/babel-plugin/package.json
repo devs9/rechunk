@@ -1,6 +1,6 @@
 {
   "name": "@rechunk/babel-plugin",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Babel plugin for transforming and processing ReChunk directives in React Native applications",
   "keywords": [
     "rechunk",
