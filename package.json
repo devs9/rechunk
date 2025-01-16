@@ -36,7 +36,8 @@
     "release:major": "pnpm release --increment major",
     "release:minor": "pnpm release --increment minor",
     "release:patch": "pnpm release --increment patch",
-    "release:pre-release": "pnpm release --preRelease=rc"
+    "release:pre-release": "pnpm release --preRelease=rc",
+    "postrelease": "pnpm --filter '@repo/*' --filter '@rechunk/*' recursive exec pnpm publish"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -81,7 +82,8 @@
       "@release-it-plugins/workspaces": {
         "workspaces": [
           "packages/*"
-        ]
+        ],
+        "publish": false
       }
     },
     "git": {
