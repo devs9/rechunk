@@ -1,6 +1,6 @@
 {
   "name": "rechunk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "🚀 Securely load and execute remote React Native components and functions over-the-air",
   "keywords": [
@@ -81,7 +81,13 @@
     "plugins": {
       "@release-it-plugins/workspaces": {
         "workspaces": [
-          "packages/*"
+          "packages/api-client",
+          "packages/babel-plugin",
+          "packages/cli",
+          "packages/core",
+          "packages/metro-config",
+          "packages/rollup-preset",
+          "packages/utils"
         ],
         "publish": false
       }
@@ -89,7 +95,7 @@
     "git": {
       "commitMessage": "chore: release v${version}",
       "requireBranch": "develop",
-      "requireCleanWorkingDir": true,
+      "requireCleanWorkingDir": false,
       "tagName": "v${version}"
     },
     "github": {

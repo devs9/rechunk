@@ -1,6 +1,6 @@
 {
   "name": "@rechunk/rollup-preset",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Rollup configuration preset for bundling ReChunk components and modules",
   "keywords": [
     "rechunk",
