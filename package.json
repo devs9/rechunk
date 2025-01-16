@@ -1,6 +1,6 @@
 {
   "name": "rechunk",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "private": true,
   "description": "🚀 Securely load and execute remote React Native components and functions over-the-air",
   "keywords": [

@@ -1,6 +1,6 @@
 {
   "name": "@rechunk/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Core functionality for ReChunk dynamic code loading and chunk management in React Native",
   "keywords": [
     "rechunk",

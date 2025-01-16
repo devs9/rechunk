@@ -1,6 +1,6 @@
 {
   "name": "@rechunk/api-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript API client for ReChunk services with OpenAPI-generated interfaces",
   "keywords": [
     "rechunk",
