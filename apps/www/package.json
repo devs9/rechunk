@@ -9,7 +9,7 @@
     "db:push": "prisma db push",
     "db:reset": "prisma migrate reset --force",
     "db:seed": "pnpm db:setup:dev && prisma migrate reset --force && prisma db seed",
-    "db:setup:dev": "prisma generate && prisma migrate dev --init name",
+    "db:setup:dev": "prisma generate && prisma migrate dev --name init",
     "db:setup:prod": "prisma generate && prisma migrate deploy",
     "db:studio": "prisma studio",
     "deploy": "pnpm build && ansible-playbook -i deploy/inventory.yml deploy/deploy.yml",
