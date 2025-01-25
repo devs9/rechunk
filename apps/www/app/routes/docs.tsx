@@ -9,12 +9,7 @@ export default function DocsLayout() {
   return (
     <>
       <Header />
-      <GridPattern
-        width={30}
-        height={30}
-        strokeDasharray="4 2"
-        className="fixed top-3 -z-10 [mask-image:radial-gradient(750px_circle_at_center,white,transparent)] lg:-top-1"
-      />
+      <GridPattern className="fixed top-3 -z-10 [mask-image:radial-gradient(750px_circle_at_center,white,transparent)] lg:-top-1" />
       <SidebarProvider>
         <div className="m-auto block px-4 sm:px-6 lg:flex lg:px-11">
           <DocsSidebar />
