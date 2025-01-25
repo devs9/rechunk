@@ -1,6 +1,6 @@
 import {CaretRightIcon} from '@radix-ui/react-icons';
 import {NavLink, useLocation} from '@remix-run/react';
-import {type PropsWithChildren, useEffect, useState} from 'react';
+import {type PropsWithChildren, useEffect, useRef, useState} from 'react';
 
 import {
   Collapsible,
@@ -85,7 +85,7 @@ function DocsSidebarDesktopView({children}: PropsWithChildren) {
   return (
     <Sidebar
       collapsible="none"
-      className="sticky bottom-0 top-[var(--header-height)] -ml-3 hidden h-[calc(100vh-var(--header-height))] w-[--sidebar-width] flex-col gap-3 self-start overflow-auto pb-10 lg:flex">
+      className="sticky bottom-0 top-[var(--header-height)] -ml-3 hidden h-[calc(100vh-var(--header-height))] w-[--sidebar-width] flex-col gap-3 self-start overflow-auto pb-10 pt-2 lg:flex">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -98,6 +98,7 @@ function DocsSidebarDesktopView({children}: PropsWithChildren) {
 }
 
 function DocsSidebarMobileView({children}: PropsWithChildren) {
+  const clickRef = useRef(false);
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const doc = useDoc();
@@ -106,12 +107,35 @@ function DocsSidebarMobileView({children}: PropsWithChildren) {
     setIsOpen(false);
   }, [location.key]);
 
+  useEffect(() => {
+    if (isOpen) {
+      const clickHandler = () => {
+        if (!clickRef.current) setIsOpen(false);
+        clickRef.current = false;
+      };
+
+      document.addEventListener('mousedown', clickHandler);
+      document.addEventListener('touchstart', clickHandler);
+
+      return () => {
+        document.removeEventListener('mousedown', clickHandler);
+        document.removeEventListener('touchstart', clickHandler);
+      };
+    }
+  }, [isOpen]);
+
   return (
     <details
       open={isOpen}
-      onToggle={event => {
+      aria-expanded={isOpen}
+      onToggle={event => setIsOpen(event.currentTarget.open)}
+      onMouseDown={event => {
         if (event.defaultPrevented) return;
-        setIsOpen(event.currentTarget.open);
+        if (isOpen) clickRef.current = true;
+      }}
+      onTouchStart={event => {
+        if (event.defaultPrevented) return;
+        if (isOpen) clickRef.current = true;
       }}
       className="group sticky top-[var(--header-height)] flex h-full w-full flex-col lg:hidden">
       <summary className="flex cursor-pointer select-none items-center gap-2 border-b-2 border-gray-50 bg-white px-2 py-3 text-sm font-medium hover:bg-gray-50 active:bg-gray-100">
