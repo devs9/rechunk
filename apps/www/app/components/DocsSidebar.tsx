@@ -19,6 +19,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  SidebarProvider,
 } from '~/components/ui/sidebar';
 import {
   type DocsMenuItemType,
@@ -137,11 +138,11 @@ function DocsSidebarMobileView({children}: PropsWithChildren) {
         if (event.defaultPrevented) return;
         if (isOpen) clickRef.current = true;
       }}
-      className="group sticky top-[var(--header-height)] flex h-full w-full flex-col lg:hidden">
+      className="group sticky top-[var(--header-height)] z-50 flex h-full w-full flex-col lg:hidden">
       <summary className="flex cursor-pointer select-none items-center gap-2 border-b-2 border-gray-50 bg-white px-2 py-3 text-sm font-medium hover:bg-gray-50 active:bg-gray-100">
         <div className="whitespace-nowrap font-bold">{doc?.title}</div>
       </summary>
-      <div className="absolute min-h-[30vh] w-full overflow-auto overscroll-contain rounded-b-3xl bg-white p-3 shadow-2xl">
+      <div className="absolute h-[66vh] min-h-[30vh] w-full overflow-auto overscroll-contain rounded-b-3xl bg-white p-3 shadow-2xl">
         {children}
       </div>
     </details>
@@ -150,13 +151,13 @@ function DocsSidebarMobileView({children}: PropsWithChildren) {
 
 export function DocsSidebar() {
   return (
-    <>
+    <SidebarProvider className="contents lg:flex">
       <DocsSidebarMobileView>
         <DocsSideBarMenu items={docsSidebar} />
       </DocsSidebarMobileView>
       <DocsSidebarDesktopView>
         <DocsSideBarMenu items={docsSidebar} />
       </DocsSidebarDesktopView>
-    </>
+    </SidebarProvider>
   );
 }
